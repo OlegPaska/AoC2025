@@ -1,17 +1,21 @@
+#holy jank. idek i just didnt want to rewrite stuff
+
 def cycleCheck(n):
     num = str(n)
+    res = ""
     for i in range(1,len(num)//2+1):
         br = False
         loopingStr = num[:i]
-        if num == loopingStr+loopingStr:
-            return num     
-    return None
-
-        # for j in range(len(num)):
-        #     if loopingStr[j%len(loopingStr)] != num[j]:
-        #         br = True
-        #         break
-        # if not br: res = num; break
+        if len(num) % len(loopingStr) == 0:
+            for j in range(len(num)):
+                if loopingStr[j%len(loopingStr)] != num[j]:
+                    br = True
+                    break
+        else:
+            br = True
+        
+        if not br: res = num; break
+    return res
 
 with open("in.txt") as f:
     res = []
